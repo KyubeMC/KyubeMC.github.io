@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Click Game</title>
+<title>Click Me</title>
 <style>
   body {
     margin: 0;
     background: black;
-    color: white;
-    font-family: Arial;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: white;
+    font-size: 40px;
+    font-family: Arial;
     cursor: pointer;
   }
-  #counter {
-    font-size: 40px;
-    text-align: center;
-  }
-  iframe {
+
+  #video {
     position: fixed;
     top: 0;
     left: 0;
@@ -30,29 +28,21 @@
   }
 </style>
 </head>
-<body onclick="handleClick()">
+<body onclick="playVideo()">
 
-<div id="counter">Click me 50 times</div>
+<div id="text">Click me!</div>
 
-<iframe id="video"
-  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0"
-  allow="autoplay; fullscreen">
-</iframe>
+<iframe id="video" allow="autoplay; fullscreen"></iframe>
 
 <script>
-let clicks = 50;
+function playVideo() {
+  const iframe = document.getElementById("video");
+  const text = document.getElementById("text");
 
-function handleClick() {
-  clicks--;
-  document.getElementById("counter").innerText = "Clicks left: " + clicks;
+  text.style.display = "none";
+  iframe.style.display = "block";
 
-  if (clicks === 20) {
-    document.getElementById("video").style.display = "block";
-  }
-
-  if (clicks <= 0) {
-    document.getElementById("counter").innerText = "Done!";
-  }
+  iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&controls=0";
 }
 </script>
 
